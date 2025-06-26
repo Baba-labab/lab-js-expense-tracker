@@ -44,27 +44,35 @@ class Budget {
         let totalIncome = 0;
         let totalExpenses = 0;
         for (let i = 0; i < this.entries.length; i++) {
-            totalIncome += this.entries[i].income;
-            totalExpenses += this.entries[i].expenses;
+            console.log(this.entries[i])
+            if (this.entries[i].type === 'income') {
+
+                totalIncome += this.entries[i].amount;
+            } else {
+
+                totalExpenses += this.entries[i].amount;
+            }
         }
         return totalIncome - totalExpenses;
     }
 
     getFormattedEntries() {
         let budget = [];
-       //let expenses = [];
 
-        this.entries.forEach(function (entry) {
 
-            if (this.type === "income") {
-                let formattedIncomes = `${entry.date} | ${entry.description} | ${entry.amount} € `;
+        //this.entries.forEach(entry => {
+        for (let i = 0; i = this.entries.length; i++) {
+            if (this.entries[i] === "income") {
+                let formattedIncomes = `${this.date} | ${this.description} | ${this.amount} €`;
                 budget.push(formattedIncomes);
-            } else if (this.type === "expense") {
-                let formattedExpenses = `${entry.date} | ${entry.description} | -${entry.amount} €`;
+            } else if (this.entries[i] === "expense") {
+                let formattedExpenses = `${this.date} | ${this.description} | -${this.amount} €`;
                 budget.push(formattedExpenses);
             }
 
-        });
+
+        };
+
         return budget;
     }
 
